@@ -81,5 +81,31 @@ return [
     'Username (username), Password (password) and Email (email) required.' => 'Kullanıcı Adı (username), Parola (password) ve Eposta (email) gereklidir.',
     'Signup denied with API' => 'API ile kayıt reddedildi.',
     'Login denied with API' => 'API ile giriş reddedildi.',
-    'No content' => 'İçerik yok'
+    'No content' => 'İçerik yok',
+
+
+
+    'Thank you for contacting us. We will respond to you as soon as possible.' => 'Bizimle iletişime geçtiğiniz için teşekkürler. Size en kısa sürede cevap vereceğiz.',
+    'There was an error sending your message.' => 'Mesajınız gönderilirken bir hata oluştu.',
+    'You are not allowed to access this page.' => 'Bu sayfaya erişmenize izin verilmiyor.',
+    'Type' => 'Tür',
+    'Description' => 'Tanım',
+    'Email / Username' => 'E-posta / Kullanıcı adı',
+    'Module' => 'Modül',
+    'Label' => 'Etkiket',
+    'Value' => 'Değer',
+    'Config' => 'Yapılandırma',
+    'This username has already been taken.' => 'Bu kullanıcı adı zaten alındı.',
+    'This email address has already been taken.' => 'Bu e-posta adresi zaten alınmış.',
+
+    'Signup Form' => 'Kayıt Formu',
+    'Login Form' => 'Giriş Formu',
+    'Contact Form' => 'İletişim Formu',
+    'Default Role' => 'Varsayılan Rol',
+    'Default User Role' => 'Varsayılan Kullanıcı Rolü',
+    'Application Logo' => 'Uygulama Logosu',
+
+
+    
 ];
+

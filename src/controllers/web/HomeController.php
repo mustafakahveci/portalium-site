@@ -16,7 +16,7 @@ class HomeController extends WebController
 {
     public function actionIndex()
     {
-        $settings = ArrayHelper::map(Setting::find()->asArray()->all(),'name','value');
+        $settings = ArrayHelper::map(Setting::find()->asArray()->all(), 'name', 'value');
         // has module content module
         $hasContentModule = Yii::$app->hasModule('content');
         $content = "";
@@ -25,33 +25,38 @@ class HomeController extends WebController
             $content = \portalium\content\models\Content::find()->where(['id_content' => $settings['page::home']])->one();
             if ($content) {
                 $content = $content->body;
-            }else{
-                $content = "<h1>".Module::t('No content')."</h1>";
+            } else {
+                if (Yii::$app->user->isGuest) {
+                    return $this->redirect('site/auth/login');
+                } else {
+                    $content = "<h1>" . Module::t('No content') . "</h1>";
+                }
             }
-        }else{
+        } else {
             $content = Module::t('<div class="site-index">
             <div class="jumbotron">
-                <h1>'.Module::t('Portalium Home - Frontend') .'</h1>
+                <h1>' . Module::t('Portalium Home - Frontend') . '</h1>
             </div>
         </div>');
         }
-        return $this->render('index',
-        [
-            'content' => $content,
-        ]);
+        return $this->render(
+            'index',
+            [
+                'content' => $content,
+            ]
+        );
     }
 
     public function actionAbout()
     {
-        if(Setting::findOne(['name' => 'page::about'])->value)
+        if (Setting::findOne(['name' => 'page::about'])->value)
             return $this->render('about');
         return $this->goHome();
     }
 
     public function actionContact()
     {
-        if(Setting::findOne(['name' => 'form::contact'])->value)
-        {
+        if (Setting::findOne(['name' => 'form::contact'])->value) {
             $model = new ContactForm();
             if ($model->load(Yii::$app->request->post()) && $model->validate()) {
                 if ($model->sendEmail(Setting::findOne(['name' => 'email::address'])->value)) {
@@ -73,7 +78,7 @@ class HomeController extends WebController
 
     public function actionLang($lang)
     {
-        Yii::$app->session->set('lang',$lang);
+        Yii::$app->session->set('lang', $lang);
         return $this->goBack(Yii::$app->request->referrer);
     }
 }
